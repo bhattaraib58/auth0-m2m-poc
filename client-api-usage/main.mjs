@@ -1,6 +1,13 @@
 import axios from "axios";
 
 import appConfig from "./appConfig.mjs";
+import { generateErrorHelper } from "./util.mjs";
+
+// Attach response interceptor
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => generateErrorHelper(error)
+);
 
 /*
  * Helper method to get an access token from the Authorization Server.
@@ -59,7 +66,12 @@ const main = async () => {
 
     console.log("assessment:", assessmentResponse.data);
   } catch (error) {
-    console.error(error);
+    console.error(
+      `❌ Request failed | URL: ${error.url || "N/A"} | Status: ${
+        error.status || "N/A"
+      } | Message: ${error.errors?.message || "Unknown error"}`,
+      error.stack
+    );
   }
 };
 
