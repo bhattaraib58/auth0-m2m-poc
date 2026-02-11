@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/bhattaraib58/auth0-m2m-poc#readme",
   "dependencies": {
-    "axios": "^1.9.0",
+    "axios": "^1.13.5",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
